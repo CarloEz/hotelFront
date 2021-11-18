@@ -1,0 +1,20 @@
+[
+    {
+        "url": "https://www.cataloniahotels.com/es/blog/wp-content/uploads/2017/09/desayuno-en-el-hotel.jpg",
+        "tipo": "Desayuno",
+        "detalle":"Tarifa por persona",
+        "costo": "125"
+    },
+    {
+        "url": "https://www.tangol.com/Fotos/Tours/traslado-puerto-a-hotel-centro-de-manaos_2266_201905070521401.Mobile.JPEG",
+        "tipo": "Traslado",
+        "detalle":"Tarifa por persona",
+        "costo": "67"
+    },
+    {
+        "url": "https://palaciorentacar.com/images/serv1.jpg",
+        "detalle":"Tarifa por dia",
+        "tipo": "Renta de vehículo",
+        "costo": "150"
+    }
+]

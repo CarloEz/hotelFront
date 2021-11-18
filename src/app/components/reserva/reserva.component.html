@@ -1,0 +1,79 @@
+<div class="col-6 mx-auto">
+    <form class="row g-2" [formGroup]="frmReserva" novalidate="novalidate">
+        <h5>Reserva</h5>
+        <div class="form-group">
+                <input placeholder="Ingreso-Salida" class="form-control" formControlName="fecha"
+                bsDaterangepicker [bsConfig]="{ rangeInputFormat: 'DD/MM/YYYY',  returnFocusToInput: true,selectWeekDateRange: true }">
+        </div>
+        <div class="form-floating col-md-6">
+            <input type="number" formControlName="numeroMayores" min="0" class="form-control" id="mayores" placeholder="nombre">
+            <label for="mayores">Huespedes adultos</label>
+        </div>
+        <div class="form-floating col-md-6">
+            <input type="number" formControlName="numeroMenores" min="0" class="form-control" id="menores"
+                placeholder="menores">
+            <label for="menores">Huespedes menores (3 años)</label>
+        </div>
+        <div class="form-floating col-md-6">
+            <select formControlName="indexHabitacion" class="form-select" id="indexHabitacion">
+                <option *ngFor="let item of tiposHabitacion; index as i" [value]="i">
+                    {{ item.tipo }}
+                </option>
+            </select>
+            <label for="indexHabitacion">Tipos de habitación</label>
+        </div>
+
+        <div class="form-floating col-md-6">
+            <input formControlName="numHabitacion" type="number" min="0" id="numHabitacion" class="form-control">
+            <label for="numHabitacion">Cantidad de habitaciones</label>
+        </div>
+
+        <hr>
+        <h5>Detalle de Servicios</h5>
+        <div class="form-floating col-md-8">
+            <select formControlName="indexServicio" class="form-select" id="indexServicio">
+                <option *ngFor="let item of tiposServicio; index as i" [value]="i">
+                    {{ item.tipo }} -  {{item.detalle}} - {{ item.costo }}
+                </option>
+            </select>
+            <label for="indexServicio">Servicios</label>
+        </div>
+
+        <div class="form-floating col-md-2">
+            <input formControlName="numServicio" type="number" min="0" id="numServicio" class="form-control">
+            <label for="numServicio">Cantidad</label>
+        </div>
+
+        <button class="btn btn-primary col-md-2" (click)="agregarServicio()">Agregar Servicio</button>
+
+        <div formArrayName="servicios" *ngFor="let item of servicios.controls; let i=index">
+            <div [formGroupName]="i">
+                <tbody>
+                    <tr>
+                        <td>Servicio</td>
+                        <td>
+                            <input formControlName="tipo" type="text" class="form-control" readonly>
+                        </td>
+                        <td>Cantidad</td>
+                        <td>
+                            <input formControlName="numero" type="number" class="form-control" readonly>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" (click)="eliminarServicio(i)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+        <hr>
+        <h4>Calcular Reserva</h4>
+        <button class="btn btn-primary col-md-6" (click)="calcularReserva()">Calcular Reservacion</button>
+        
+        <div class="form-floating col-md-6">
+            <input class="form-control" type="text" formControlName="total" id="total" readonly>
+            <label for="total">Total</label>
+        </div>
+
+        <button (click)="crear()"  class="btn btn-lg btn-success w-100 mt-4" data-bs-dismiss="modal">Reservar</button>
+    </form>
+</div>

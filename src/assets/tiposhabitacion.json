@@ -1,0 +1,30 @@
+[
+    {
+        "url":"https://www.stanzahotel.com/wp-content/uploads/2020/07/2020_stanza_hotel_habitacion_sencilla_00.jpg",
+        "costo_fin": "150",
+        "costo_semana": "100",
+        "tipo": "Simple",
+        "disponibles":30
+    },
+    {
+        "url":"https://www.stanzahotel.com/wp-content/uploads/2020/07/2020_stanza_hotel_habitacion_doble_01.jpg",
+        "costo_fin": "190",
+        "costo_semana": "140",
+        "tipo": "Doble",
+        "disponibles":40
+    },
+    {
+        "url":"https://www.hotelelprincipecallao.com/public/images/sites/477-131107.jpg",
+        "costo_fin": "210",
+        "costo_semana": "190",
+        "tipo": "Triple",
+        "disponibles":40
+    },
+    {
+        "url":"https://s3.amazonaws.com/images.vive.travel/photo_rooms/9813/xlarge/_OHF0933.jpg?1546702485",
+        "costo_fin": "230",
+        "costo_semana": "200",
+        "tipo": "Cuádruple",
+        "disponibles":40
+    }
+]

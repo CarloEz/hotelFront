@@ -1,0 +1,20 @@
+<div id="carouselExampleFade" class="carousel slide carousel-fade bg-dark" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item" [ngClass]="{'active': i==0}" *ngFor="let item of tiposHabitaciones; index as i">
+            <img [src]="item.url" class="d-block picture" [alt]="item.tipo">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="text-center bg-dark">Habitación {{ item.tipo }}</h1>
+                <span class="badge bg-secondary me-1">Cuota de lunes a viernes a Q{{item.costo_fin}}</span>
+                <span class="badge bg-secondary">Cuota de Sabado a Domingo a Q{{item.costo_semana}}</span>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
