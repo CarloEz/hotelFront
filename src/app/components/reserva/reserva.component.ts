@@ -16,6 +16,7 @@ export class ReservaComponent implements OnInit {
   tiposServicio: any;
   tiposHabitacion: any;
   totalHabitacion:number=0;
+  calculoReserva:boolean=false;
 
   constructor(private reservaService: ReservaService, private authservice:AuthService,private toastr: ToastrService) {
     this.servicios = new FormArray([]);
@@ -90,6 +91,7 @@ export class ReservaComponent implements OnInit {
 
     this.frmReserva.controls['total'].setValue(this.frmReserva.controls['total'].value + objHabitacion.costo);
     this.totalHabitacion=objHabitacion.costo;
+    this.calculoReserva=true;
   }
 
   calcularHabitacion(index: number, objDias:any): any {
@@ -125,15 +127,19 @@ export class ReservaComponent implements OnInit {
   }
 
   crear(): void {
-    let token=this.authservice.getToken();
-    this.frmReserva.controls['correo'].setValue(this.authservice.getCorreo());
-    
-    this.reservaService.crearReserva(this.frmReserva.value,token)
-    .subscribe((res:any)=>{   
-      this.toastr.success(res.msg,'Reserva');
-      this.frmReserva.reset();
-      this.servicios.clear();
-    })
+    if(this.calculoReserva === true){      
+      let token=this.authservice.getToken();
+      this.frmReserva.controls['correo'].setValue(this.authservice.getCorreo());
+      
+      this.reservaService.crearReserva(this.frmReserva.value,token)
+      .subscribe((res:any)=>{   
+        this.toastr.success(res.msg,'Reserva');
+        this.frmReserva.reset();
+        this.servicios.clear();
+      })
+    }else{
+      this.toastr.info("Debes calcular reservación", "CALCULAR RESERVA");
+    }
   }
 
   countDays(fechaInicial: Date, fechaFinal: Date) {
