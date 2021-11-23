@@ -1,40 +1,44 @@
-<div class="col-md-6 mx-auto">
-  <div class="card mt-5">
-    <div class="card-header">
-      Empresas
+<div class="container-fluid fondo" style="min-height: 90vh;">
+  <div class="col-md-6 mx-auto">
+    <div class="card">
+      <div class="card-header bg-dark text-light">
+        Empresas
+      </div>
+      <div class="card-body bg-light">
+        <h5 class="card-title">Registrar empresa</h5>
+        <input class="form-control" type="text" [value]="empresa" id="empresa">
+        <input (click)="agregarEmpresa()" class="btn btn-primary" type="button" value="Registrar">
+      </div>
     </div>
-    <div class="card-body">
-      <h5 class="card-title">Registrar empresa</h5>
-      <input class="form-control" type="text" [value]="empresa" id="empresa">
-      <input (click)="agregarEmpresa()" class="btn btn-primary" type="button" value="Registrar">
-    </div>
-  </div>
-  <hr>
-  <h5>Estado de cuenta</h5>
+    <hr>
 
-  <form class="row g-2" action="">
-    <div class="form-floating">
-      <input type="text" id="buscar" name="correo" class="form-control">
-      <label for="buscar">Buscar por correo</label>
-    </div>
-    <div>
-      <button class="btn btn-primary" (click)="verCredito()">Buscar</button>
-    </div>
-  </form>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Reserva</th>
-        <th>Estado</th>
-        <th>Dias</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of creditos">
-        <td>{{ item.id }}</td>
-        <td>{{ item.estado }}</td>
-        <td>{{ item.dias }}</td>
-      </tr>
-    </tbody>
-  </table>
+    <h5 class="bg-dark text-light rounded p-2">Estado de cuenta</h5>
+    <form class="row g-2">
+      <div class="form-floating">
+        <input type="text" id="buscar" name="correo" class="form-control">
+        <label for="buscar">Buscar por correo</label>
+      </div>
+      <div>
+        <button class="btn btn-primary" (click)="verCredito()">Buscar</button>
+      </div>
+    </form>
+    <hr>
+    <table class="table table-light">
+      <thead>
+        <tr class="table-dark">
+          <th>Reserva</th>
+          <th>Estado</th>
+          <th>Dias</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of creditos">
+          <td>{{ item.id }}</td>
+          <td>{{ item.estado }}</td>
+          <td>{{ item.dias }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 </div>

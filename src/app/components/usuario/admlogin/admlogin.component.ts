@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-admlogin',
   templateUrl: './admlogin.component.html',
+  styleUrls: ['./admlogin.component.css']
 })
 export class AdmloginComponent implements OnInit {
 

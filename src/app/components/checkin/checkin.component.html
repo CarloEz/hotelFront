@@ -1,72 +1,80 @@
-<div class="col-md-6 mx-auto mt-5">
-    <form class="row g-2">
-        <div class="form-floating">
-            <input type="text" id="buscar" class="form-control">
-            <label for="buscar">Buscar por codigo de reserva</label>
-        </div>
-        <div>
-            <button class="btn btn-primary" (click)="buscarReserva()">Buscar</button>
-        </div>
-    </form>
-</div>
+<div class="container-fluid fondo">
 
-<div class="col-md-6 mx-auto">
-    <form class="row g-2" [formGroup]="frmReserva" novalidate="novalidate">
-        <h5>Reserva</h5>
-        <div class="form-floating col-md-6">
-            <input type="text" formControlName="fecha_entrada" id="fechaEntrada" class="form-control" readonly>
-            <label for="fechaEntrada">Fecha entrada</label>
-        </div>
-        <div class="form-floating col-md-6">
-            <input type="text" formControlName="fecha_salida" id="fechaSalida" class="form-control" readonly>
-            <label for="fechaSalida">Fecha salida</label>
-        </div>
-        <div class="form-floating col-md-6">
-            <input type="number" formControlName="numero_adultos" min="0" class="form-control" id="mayores" readonly>
-            <label for="mayores">Huespedes adultos</label>
-        </div>
-        <div class="form-floating col-md-6">
-            <input type="number" formControlName="numero_menores" min="0" class="form-control" id="menores" readonly>
-            <label for="menores">Huespedes menores (3 años)</label>
-        </div>
-        <div class="col">
-            <div class="row g-2" formGroupName="habitacion">
-                <div class="form-floating col-md-6">
-                    <input type="text" formControlName="tipo_habitacion" class="form-control" id="indexHabitacion" readonly>
-                    <label for="indexHabitacion">Tipo de habitación</label>
+    <div class="col-md-6 mx-auto pt-5">
+        <form class="row g-2">
+            <div class="form-floating">
+                <input type="text" id="buscar" class="form-control">
+                <label for="buscar">Buscar por codigo de reserva</label>
+            </div>
+            <div>
+                <button class="btn btn-primary" (click)="buscarReserva()">Buscar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-6 mx-auto">
+        <form class="row g-2" [formGroup]="frmReserva" novalidate="novalidate">
+            <h5>Reserva</h5>
+            <div class="form-floating col-md-6">
+                <input type="text" formControlName="fecha_entrada" id="fechaEntrada" class="form-control" readonly>
+                <label for="fechaEntrada">Fecha entrada</label>
+            </div>
+            <div class="form-floating col-md-6">
+                <input type="text" formControlName="fecha_salida" id="fechaSalida" class="form-control" readonly>
+                <label for="fechaSalida">Fecha salida</label>
+            </div>
+            <div class="form-floating col-md-6">
+                <input type="number" formControlName="numero_adultos" min="0" class="form-control" id="mayores"
+                    readonly>
+                <label for="mayores">Huespedes adultos</label>
+            </div>
+            <div class="form-floating col-md-6">
+                <input type="number" formControlName="numero_menores" min="0" class="form-control" id="menores"
+                    readonly>
+                <label for="menores">Huespedes menores (3 años)</label>
+            </div>
+            <div class="col">
+                <div class="row g-2" formGroupName="habitacion">
+                    <div class="form-floating col-md-6">
+                        <input type="text" formControlName="tipo_habitacion" class="form-control" id="indexHabitacion"
+                            readonly>
+                        <label for="indexHabitacion">Tipo de habitación</label>
+                    </div>
+                    <div class="form-floating col-md-6">
+                        <input formControlName="numero" type="number" min="0" id="numHabitacion" class="form-control"
+                            readonly>
+                        <label for="numHabitacion">Cantidad de habitaciones</label>
+                    </div>
                 </div>
-                <div class="form-floating col-md-6">
-                    <input formControlName="numero" type="number" min="0" id="numHabitacion" class="form-control" readonly>
-                    <label for="numHabitacion">Cantidad de habitaciones</label>
-                </div>    
             </div>
-        </div>
-        <hr>
-        <h5>Detalle de Servicios</h5>        
-        <div formArrayName="servicios" *ngFor="let item of servicios.controls; let i=index">
-            <div [formGroupName]="i">
-                <tbody>
-                    <tr>
-                        <td>Servicio</td>
-                        <td>
-                            <input formControlName="servicio" type="text" class="form-control" readonly>
-                        </td>
-                        <td>Cantidad</td>
-                        <td>
-                            <input formControlName="numero" type="number" min="0" class="form-control">
-                        </td>
-                        <td>
-                            <input class="btn btn-warning" type="button" (click)="actualizar(i)" value="ACTUALIZAR">
-                        </td>
-                    </tr>
-                </tbody>
+            <hr>
+            <h5>Detalle de Servicios</h5>
+            <div formArrayName="servicios" *ngFor="let item of servicios.controls; let i=index">
+                <div [formGroupName]="i">
+                    <tbody>
+                        <tr>
+                            <td>Servicio</td>
+                            <td>
+                                <input formControlName="servicio" type="text" class="form-control" readonly>
+                            </td>
+                            <td>Cantidad</td>
+                            <td>
+                                <input formControlName="numero" type="number" min="0" class="form-control">
+                            </td>
+                            <td>
+                                <input class="btn btn-warning" type="button" (click)="actualizar(i)" value="ACTUALIZAR">
+                            </td>
+                        </tr>
+                    </tbody>
+                </div>
             </div>
-        </div>
-        <hr>
-        <div class="form-floating col-md-6">
-            <input class="form-control" type="text" formControlName="total" id="total" readonly>
-            <label for="total">Total</label>
-        </div>
-        <button (click)="estado()"  class="btn btn-lg btn-success w-100 mt-4" data-bs-dismiss="modal">Check In</button>
-    </form>
+            <hr>
+            <div class="form-floating col-md-6">
+                <input class="form-control" type="text" formControlName="total" id="total" readonly>
+                <label for="total">Total</label>
+            </div>
+            <button (click)="estado()" class="btn btn-lg btn-success w-100 mt-4" data-bs-dismiss="modal">Check
+                In</button>
+        </form>
+    </div>
 </div>

@@ -1,60 +1,63 @@
-<div class="col-md-6 mx-auto mt-5">
-    <form class="row g-2" action="">
-        <div class="form-floating">
-            <input type="text" id="buscar" class="form-control">
-            <label for="buscar">Buscar por codigo de reserva</label>
-        </div>
-        <div>
-            <button class="btn btn-primary" (click)="buscarReserva()">Buscar</button>
-        </div>
-    </form>
+<div class="container-fluid fondo">
 
-    <p>Estado de la reserva: {{ totales.estado }}</p>
+    <div class="col-md-6 mx-auto py-4">
+        <form class="row g-2">
+            <div class="form-floating">
+                <input type="text" id="buscar" class="form-control">
+                <label for="buscar">Buscar por codigo de reserva</label>
+            </div>
+            <div>
+                <button class="btn btn-primary" (click)="buscarReserva()">Buscar</button>
+            </div>
+        </form>
 
-    <table class="table col-md-6">
-        <thead>
-            <tr>
-                <th scope="col">Abonos</th>
-                <th scope="col">Reserva</th>
-                <th scope="col">Servicios</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ totales.abonos }}</td>
-                <td>{{ totales.habitacion }}</td>
-                <td>{{ totales.servicios }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <p>Estado de la reserva: {{ totales.estado }}</p>
 
-    <div class="card mt-5">
-        <div class="card-header">
-            Abonos
+        <table class="table table-light col-md-6">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col">Abonos</th>
+                    <th scope="col">Reserva</th>
+                    <th scope="col">Servicios</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ totales.abonos }}</td>
+                    <td>{{ totales.habitacion }}</td>
+                    <td>{{ totales.servicios }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="card mt-5">
+            <div class="card-header bg-dark text-light">
+                Abonos
+            </div>
+            <div class="card-body bg-light">
+                <h5 class="card-title">Registrar Abono</h5>
+                <input class="form-control" type="text" [value]="objAbono.abono" id="abono">
+                <input (click)="agregarAbono()" class="btn btn-primary" type="button" value="Registrar">
+            </div>
         </div>
-        <div class="card-body">
-            <h5 class="card-title">Registrar Abono</h5>
-            <input class="form-control" type="text" [value]="objAbono.abono" id="abono">
-            <input (click)="agregarAbono()" class="btn btn-primary" type="button" value="Registrar">
+        <hr>
+        <h5 class="bg-dark text-light rounded p-2">Cancelar Reserva</h5>
+        <div class="row g-2">
+            <input class="col form-control" type="number" [value]="diferencia" readonly>
+            <button (click)="cancelarReserva()" class="col btn btn-success">Pagar</button>
         </div>
-    </div>
-    <hr>
-    <h5>Cancelar Reserva</h5>
-    <div class="row g-2">
-        <input class="col form-control" type="number" [value]="diferencia" readonly>
-        <button (click)="cancelarReserva()" class="col btn btn-success">Pagar</button>
-    </div>
-    <hr>
-    <div class="row g-2" *ngIf="totales.estado!='credito'">
-        <h5>Crédito</h5>
-        <select class="form-select" id="empresa">
-            <option selected disabled>Seleccionar una empresa</option>
-            <option [value]="item.idempresas" *ngFor="let item of empresas">
-                {{item.empresa}}
-            </option>
-        </select>
-        <input class="col form-control" type="number" min="1" max="45" id="dias" placeholder="Dias de crédito">
-        <input class="col form-control" type="number" [value]="diferencia" readonly>
-        <button (click)="creditoReserva()" class="col btn btn-success">Credito</button>
+        <hr>
+        <div class="row g-2" *ngIf="totales.estado!='credito'">
+            <h5 class="bg-dark text-light rounded p-2">Crédito</h5>
+            <select class="form-select" id="empresa">
+                <option selected disabled>Seleccionar una empresa</option>
+                <option [value]="item.idempresas" *ngFor="let item of empresas">
+                    {{item.empresa}}
+                </option>
+            </select>
+            <input class="col form-control" type="number" min="1" max="45" id="dias" placeholder="Dias de crédito">
+            <input class="col form-control" type="number" [value]="diferencia" readonly>
+            <button (click)="creditoReserva()" class="col btn btn-success">Credito</button>
+        </div>
     </div>
 </div>
